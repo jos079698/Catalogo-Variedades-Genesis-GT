@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Variedades Genesis GT</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+text-align:center;
+}
+
+#productos{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+padding:20px;
+}
+
+.producto{
+background:white;
+padding:10px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.producto img{
+width:100%;
+}
+
+button{
+background:black;
+color:white;
+border:none;
+padding:8px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>VARIEDADES GENESIS GT</h1>
+
+<div id="productos"></div>
+
+<script>
+
+fetch("https://script.google.com/macros/s/AKfycbxRCuTcpCBlXCUHY1yoHLSSzAvFSu6PRunE9tocSZG7VmOXCSCTWEuBeyCCf0A2lszl/exec")
+.then(res => res.json())
+.then(data => {
+
+let contenedor = document.getElementById("productos");
+
+data.forEach(p => {
+
+contenedor.innerHTML += `
+<div class="producto">
+
+<img src="${p.imagen}">
+
+<h3>${p.nombre}</h3>
+
+<p>Precio: Q${p.precio}</p>
+
+<p>${p.sexo}</p>
+
+<button>Agregar al carrito</button>
+
+</div>
+`;
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
